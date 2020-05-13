@@ -1,0 +1,70 @@
+body{
+  background: url("/img/backg.jpg")
+  no-repeat center center fixed;
+  background-size: cover;
+  font-family: sans-serif;
+
+}
+.input_form{
+margin-left:10%;
+}
+.input_field{
+border-radius:5px;
+
+}
+.input_field:focus{
+box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border-radius:5px;
+}
+.list{
+position:relative;
+width:60%;
+margin-left:10%;
+height:25px;
+margin-bottom:5px;
+background: url("/img/pattern1.jpeg") repeat;
+box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.list a{
+float:right;
+}
+.container{
+  width:40%;
+  margin:auto;
+  overflow: hidden;
+  padding:1rem;
+  border-radius:10px;
+  text-align:left;
+  margin-top: 7%;
+  background-color: #fff;
+
+}
+hr {
+  width:80%
+}
+.fb{
+  padding:0.3rem .4rem;
+  color:#fff;
+  background-color: #426782;
+  border:none;
+  border-radius: 8px;
+
+}
+a {
+  text-decoration: none;
+  }
+.container input{
+  padding: 0.5rem
+  width:70%
+}
+.container input[type=checkbox]{
+  width:auto;
+}
+.btn{
+  padding:1rem;
+  background-color: #2ecc71
+  font-size:1rem
+  width:50%
+  border-radius:7px;
+  border:none;
+}
