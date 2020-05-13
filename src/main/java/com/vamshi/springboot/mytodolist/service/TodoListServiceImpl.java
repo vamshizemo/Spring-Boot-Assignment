@@ -1,7 +1,7 @@
 package com.vamshi.springboot.mytodolist.service;
 
-import com.vamshi.springboot.mytodolist.dao.TodoListDetails;
 import com.vamshi.springboot.mytodolist.entity.TodoList;
+import com.vamshi.springboot.mytodolist.repository.TodoListDetailsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,45 +13,46 @@ import java.util.Optional;
 @Service
 public class TodoListServiceImpl implements TodoListService {
 
-    public TodoListDetails theTodoListDetails;
+    private TodoListDetailsRepository theTodoListDetailsRepository;
 
     @Autowired
-    public TodoListServiceImpl(TodoListDetails theTodoListDetails) {
-        this.theTodoListDetails = theTodoListDetails;
+    public TodoListServiceImpl(TodoListDetailsRepository theTodoListDetailsRepository) {
+        this.theTodoListDetailsRepository = theTodoListDetailsRepository;
     }
 
     @Override
     public List<TodoList> findAll() {
-        //log.info("entered in findall function");
-        return theTodoListDetails.findAll();
+        return theTodoListDetailsRepository.findAll();
     }
 
     @Override
     public TodoList findById(int theId) {
-        Optional<TodoList> result = theTodoListDetails.findById(theId);
-
+        Optional<TodoList> result = theTodoListDetailsRepository.findById(theId);
         TodoList theTodoList = null;
 
         if (result.isPresent()) {
             theTodoList = result.get();
-        }
-        else {
-            // we didn't find the employee
-            throw new RuntimeException("Did not find list item id - " + theId);
+        } else {
+            throw new NullEmployeeException("Did not find list item id - " + theId);
         }
         return theTodoList;
     }
 
     @Override
     public void save(TodoList theTodoList) {
-        theTodoListDetails.save(theTodoList);
+        theTodoListDetailsRepository.save(theTodoList);
 
     }
 
     @Override
     public void deleteById(int theId) {
-        theTodoListDetails.deleteById(theId);
+        theTodoListDetailsRepository.deleteById(theId);
     }
+}
 
+class NullEmployeeException extends RuntimeException {
+    NullEmployeeException(String s) {
+        super(s);
+    }
 }
 
